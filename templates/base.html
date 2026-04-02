@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}TexFlow — ERP для швейных цехов{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+    {% block extra_head %}{% endblock %}
+  </head>
+  <body class="min-h-screen bg-night-950 text-zinc-100">
+    {% if messages %}
+      <div class="fixed left-0 right-0 top-24 z-[100] flex justify-center px-4" role="status">
+        {% for message in messages %}
+          <div
+            class="glass-panel rounded-2xl px-6 py-3 text-sm text-zinc-100 shadow-glow"
+          >
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true, offset: 40 });
+    </script>
+  </body>
+</html>

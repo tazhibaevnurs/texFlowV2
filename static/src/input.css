@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-night-950 text-zinc-100 antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-3xl border border-white/10 bg-white/5 shadow-glass backdrop-blur-2xl;
+    box-shadow:
+      0 8px 40px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-opal-violetdeep to-opal-violet px-8 py-4 text-base font-medium tracking-wide text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-glow-cyan focus:outline-none focus:ring-2 focus:ring-opal-cyan/40;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-8 py-4 text-base font-medium tracking-wide text-zinc-100 backdrop-blur-md transition hover:border-white/25 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20;
+  }
+}
