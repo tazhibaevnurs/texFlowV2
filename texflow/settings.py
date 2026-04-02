@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,15 @@ SECRET_KEY = 'django-insecure-q$!)ceu7!5tjkn@s+fue7sc2k3$-izx4ni1pk2&(r34z=7ng-z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Vercel: *.vercel.app via leading dot; override or extend with ALLOWED_HOSTS env (comma-separated).
+ALLOWED_HOSTS = [
+    h.strip()
+    for h in os.environ.get(
+        'ALLOWED_HOSTS',
+        'localhost,127.0.0.1,.vercel.app,texflow2.vercel.app',
+    ).split(',')
+    if h.strip()
+]
 
 
 # Application definition
