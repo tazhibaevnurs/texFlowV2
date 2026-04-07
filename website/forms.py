@@ -2,12 +2,13 @@ from django import forms
 
 from .models import Lead
 
+# Полупрозрачные поля под тёмную карточку (и при светлой ОС — без «белых пятен»)
 _FIELD_CLASS = (
-    'w-full min-h-[48px] rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base '
-    'text-slate-900 placeholder:text-slate-400 outline-none ring-0 transition '
-    'focus:border-opal-violetdeep focus:ring-2 focus:ring-opal-violetdeep/25 '
-    'dark:border-white/10 dark:bg-night-900/80 dark:text-white dark:placeholder:text-zinc-600 '
-    'dark:focus:border-opal-cyan/50 dark:focus:ring-opal-cyan/20'
+    'lead-form-input w-full min-h-[48px] rounded-2xl border border-white/12 bg-white/[0.06] px-4 py-3 '
+    'text-base text-zinc-100 placeholder:text-zinc-500 outline-none ring-0 backdrop-blur-sm transition '
+    'focus:border-opal-violetdeep focus:ring-2 focus:ring-opal-violetdeep/30 '
+    'dark:border-white/10 dark:bg-night-850/70 dark:text-white dark:placeholder:text-zinc-500 '
+    'dark:focus:border-opal-cyan/55 dark:focus:ring-opal-cyan/25'
 )
 _TEXTAREA_CLASS = _FIELD_CLASS + ' min-h-[120px] resize-y'
 
