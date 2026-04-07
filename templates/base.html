@@ -35,13 +35,64 @@
   </head>
   <body class="min-h-screen overflow-x-hidden bg-white pb-[env(safe-area-inset-bottom,0px)] text-slate-900 antialiased dark:bg-night-950 dark:text-zinc-100">
     {% if messages %}
-      <div class="fixed left-0 right-0 top-24 z-[100] flex justify-center px-4" role="status">
+      <div
+        class="fixed left-0 right-0 top-24 z-[100] flex flex-col items-center gap-3 px-4"
+        role="status"
+        aria-live="polite"
+      >
         {% for message in messages %}
-          <div
-            class="glass-panel rounded-2xl px-6 py-3 text-sm text-zinc-100 shadow-glow"
-          >
-            {{ message }}
-          </div>
+          {% if 'success' in message.tags %}
+            <div
+              class="flash-success animate-success-pop motion-reduce:animate-none flex max-w-lg flex-col items-center gap-3 rounded-3xl border border-opal-violetdeep/30 bg-gradient-to-br from-opal-violet/15 via-white to-opal-cyan/10 px-5 py-4 text-center shadow-xl shadow-opal-violetdeep/20 ring-1 ring-opal-violet/20 sm:flex-row sm:items-center sm:gap-4 sm:text-left dark:border-opal-violet/35 dark:from-opal-violetdeep/22 dark:via-night-900 dark:to-night-850 dark:shadow-opal-violetdeep/18 dark:ring-opal-violet/25"
+            >
+              <div
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-opal-violet to-opal-violetdeep text-2xl shadow-lg shadow-opal-violetdeep/45 dark:from-opal-violetdeep dark:to-opal-cyan"
+                aria-hidden="true"
+              >
+                <span class="animate-success-shimmer drop-shadow-sm">🎉</span>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p
+                  class="text-base font-semibold tracking-tight text-slate-900 dark:text-white"
+                >
+                  Ура! Заявка принята
+                </p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-zinc-300">
+                  {{ message }}
+                </p>
+              </div>
+              <svg
+                class="hidden h-8 w-8 shrink-0 text-opal-violetdeep dark:text-opal-cyan sm:block"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </div>
+          {% elif 'error' in message.tags %}
+            <div
+              class="glass-panel max-w-lg rounded-2xl border border-red-400/25 bg-red-500/10 px-5 py-3 text-sm text-red-100 shadow-glow"
+            >
+              {{ message }}
+            </div>
+          {% elif 'warning' in message.tags %}
+            <div
+              class="glass-panel max-w-lg rounded-2xl border border-amber-400/30 bg-amber-500/10 px-5 py-3 text-sm text-amber-100 shadow-glow"
+            >
+              {{ message }}
+            </div>
+          {% else %}
+            <div class="glass-panel max-w-lg rounded-2xl px-6 py-3 text-sm text-zinc-100 shadow-glow">
+              {{ message }}
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     {% endif %}
@@ -106,6 +157,44 @@
           once: true,
           offset: narrow ? 16 : 40,
         });
+
+        var flashOk = document.querySelector('.flash-success');
+        var reduceMotion =
+          typeof window.matchMedia === 'function' &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (flashOk && !reduceMotion) {
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js';
+          s.onload = function () {
+            if (typeof confetti !== 'function') return;
+            var colors = ['#1d7dfc', '#4b98ff', '#64adff', '#82beff', '#a5d0ff'];
+            confetti({
+              particleCount: 140,
+              spread: 78,
+              origin: { y: 0.14 },
+              ticks: 220,
+              gravity: 0.92,
+              colors: colors,
+            });
+            setTimeout(function () {
+              confetti({
+                particleCount: 55,
+                angle: 60,
+                spread: 50,
+                origin: { x: 0, y: 0.25 },
+                colors: colors,
+              });
+              confetti({
+                particleCount: 55,
+                angle: 120,
+                spread: 50,
+                origin: { x: 1, y: 0.25 },
+                colors: colors,
+              });
+            }, 280);
+          };
+          document.head.appendChild(s);
+        }
       })();
     </script>
   </body>

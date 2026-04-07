@@ -146,18 +146,18 @@
           class="mb-6 text-xs font-medium uppercase tracking-widecap text-opal-cyan/90"
           data-aos="fade-up"
         >
-          ERP для швейного производства
+          {{ content.hero_eyebrow }}
         </p>
         <h1
           class="text-balance text-3xl font-semibold leading-tight tracking-hero text-slate-900 sm:text-6xl lg:text-7xl dark:text-white"
           data-aos="fade-up"
           data-aos-delay="80"
         >
-          Производство сложное.
+          {{ content.hero_title_line1 }}
           <span
             class="mt-1 block text-[#69c8ff] drop-shadow-[0_0_18px_rgba(0,98,245,0.55)] sm:mt-0"
             style="background-image: linear-gradient(90deg, #69c8ff 0%, #2d8fff 52%, #9ddcff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;"
-            >Управлять им — проще.</span
+            >{{ content.hero_title_accent }}</span
           >
         </h1>
         <p
@@ -165,8 +165,7 @@
           data-aos="fade-up"
           data-aos-delay="120"
         >
-          Управляйте швейным цехом с помощью нашего приложения. Получайте точные данные о производстве
-          и сосредоточьтесь на том, что важно для бизнеса.
+          {{ content.hero_subtitle }}
         </p>
         <div
           class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-5"
@@ -185,18 +184,28 @@
       >
         <div class="glass-panel relative overflow-hidden p-2 sm:p-3 animate-float">
           <div
-            class="flex min-h-[220px] aspect-[4/3] items-center justify-center rounded-2xl bg-gradient-to-br from-night-850 via-night-900 to-night-800 px-3 py-8 sm:aspect-[21/9] sm:min-h-0 sm:rounded-[1.75rem] sm:px-6 sm:py-0"
+            class="flex min-h-[220px] aspect-[4/3] flex-col items-center justify-center rounded-2xl bg-white px-3 py-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] ring-1 ring-slate-200/90 sm:aspect-[21/9] sm:min-h-[200px] sm:rounded-[1.75rem] sm:px-8 sm:py-12 dark:bg-gradient-to-br dark:from-night-850 dark:via-night-900 dark:to-night-800 dark:shadow-none dark:ring-0"
           >
             <div class="text-center">
-              <p class="text-xs font-medium uppercase tracking-widecap text-zinc-500 sm:text-sm">
+              <p
+                class="text-xs font-medium uppercase tracking-widecap text-slate-500 sm:text-sm dark:text-zinc-500"
+              >
                 Посмотрите, как работает Швей Метрикс
               </p>
-              <p class="mt-2 text-base text-zinc-300 sm:text-lg">Интерактивный обзор интерфейса</p>
-              <div
-                class="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-glow"
+              <p
+                class="mt-2 text-base font-semibold text-slate-900 sm:text-lg dark:font-normal dark:text-zinc-100"
               >
-                <span class="ml-1 text-2xl">▶</span>
-              </div>
+                Интерактивный обзор интерфейса
+              </p>
+              <a
+                href="#how"
+                class="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#2563EB] !text-white shadow-lg shadow-[#2563EB]/30 transition hover:bg-[#1d4ed8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/40 dark:border dark:border-white/15 dark:bg-white/10 dark:!text-white dark:shadow-[0_0_28px_rgba(29,125,252,0.45)] dark:hover:bg-white/15"
+                aria-label="Перейти к разделу «Как работает»"
+              >
+                <svg class="ml-1 h-7 w-7 shrink-0 text-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M8 5v14l11-7z" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -422,30 +431,79 @@
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div data-aos="fade-right">
-          <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">Связаться</p>
+          <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">{{ content.pricing_eyebrow }}</p>
           <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
-            Оптимизировать · Управлять · Процветать
+            {{ content.pricing_title }}
           </h2>
           <p class="mt-4 text-base text-zinc-400 sm:text-lg">
-            Увеличьте эффективность и оптимизируйте процессы с нашим ERP. Оставьте заявку — подберём
-            формат внедрения и стоимость.
+            {{ content.pricing_text }}
           </p>
         </div>
         <div class="glass-panel p-6 sm:p-10" data-aos="fade-left">
-          <form method="post" class="space-y-5">
+          <form method="post" class="space-y-5" novalidate>
             {% csrf_token %}
+            {% if lead_form.non_field_errors %}
+              <div
+                class="rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                role="alert"
+              >
+                {{ lead_form.non_field_errors }}
+              </div>
+            {% endif %}
             <div>
-              <label for="email" class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                inputmode="email"
-                autocomplete="email"
-                placeholder="info@shveymetrics.kg"
-                class="w-full min-h-[48px] rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 placeholder:text-slate-400 outline-none ring-0 transition focus:border-opal-violetdeep focus:ring-2 focus:ring-opal-violetdeep/25 dark:border-white/10 dark:bg-night-900/80 dark:text-white dark:placeholder:text-zinc-600 dark:focus:border-opal-cyan/50 dark:focus:ring-opal-cyan/20"
-              />
+              <label
+                for="{{ lead_form.email.id_for_label }}"
+                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
+                >{{ lead_form.email.label }}</label
+              >
+              {{ lead_form.email }}
+              {% if lead_form.email.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.email.errors.0 }}</p>
+              {% endif %}
+            </div>
+            <div>
+              <label
+                for="{{ lead_form.name.id_for_label }}"
+                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
+                >{{ lead_form.name.label }}</label
+              >
+              {{ lead_form.name }}
+              {% if lead_form.name.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.name.errors.0 }}</p>
+              {% endif %}
+            </div>
+            <div>
+              <label
+                for="{{ lead_form.phone.id_for_label }}"
+                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
+                >{{ lead_form.phone.label }}</label
+              >
+              {{ lead_form.phone }}
+              {% if lead_form.phone.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.phone.errors.0 }}</p>
+              {% endif %}
+            </div>
+            <div>
+              <label
+                for="{{ lead_form.employee_count.id_for_label }}"
+                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
+                >{{ lead_form.employee_count.label }}</label
+              >
+              {{ lead_form.employee_count }}
+              {% if lead_form.employee_count.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.employee_count.errors.0 }}</p>
+              {% endif %}
+            </div>
+            <div>
+              <label
+                for="{{ lead_form.message.id_for_label }}"
+                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
+                >{{ lead_form.message.label }}</label
+              >
+              {{ lead_form.message }}
+              {% if lead_form.message.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.message.errors.0 }}</p>
+              {% endif %}
             </div>
             <button type="submit" class="btn-primary min-h-[48px] w-full justify-center">Оставить заявку</button>
             <p class="text-xs text-zinc-500">

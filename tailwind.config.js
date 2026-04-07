@@ -48,6 +48,8 @@ module.exports = {
         float: 'float 7s ease-in-out infinite',
         'float-delayed': 'float 9s ease-in-out infinite 1s',
         'pulse-soft': 'pulseSoft 5s ease-in-out infinite',
+        'success-pop': 'successPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both',
+        'success-shimmer': 'successShimmer 2.2s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -57,6 +59,14 @@ module.exports = {
         pulseSoft: {
           '0%, 100%': { opacity: '0.55' },
           '50%': { opacity: '0.95' },
+        },
+        successPop: {
+          '0%': { opacity: '0', transform: 'scale(0.94) translateY(-12px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        successShimmer: {
+          '0%, 100%': { opacity: '0.45' },
+          '50%': { opacity: '1' },
         },
       },
     },
