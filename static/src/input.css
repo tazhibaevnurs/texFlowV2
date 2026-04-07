@@ -48,6 +48,11 @@ html:not(.dark) .text-white {
   color: #0f172a !important;
 }
 
+/* Демо-дашборд: полноэкранный тёмный слой — белый текст не перекрашиваем в «светлую тему» */
+html:not(.dark) .dashboard-preview .text-white {
+  color: #ffffff !important;
+}
+
 html:not(.dark) .text-zinc-100 {
   color: #1f2937 !important;
 }
