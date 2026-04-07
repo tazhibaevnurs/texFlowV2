@@ -7,6 +7,9 @@
     scroll-behavior: smooth;
   }
   body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+  .dark body {
     @apply bg-night-950 text-zinc-100 antialiased;
   }
 }
@@ -19,9 +22,125 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-opal-violetdeep to-opal-violet px-8 py-4 text-base font-medium tracking-wide text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-glow-cyan focus:outline-none focus:ring-2 focus:ring-opal-cyan/40;
+    @apply inline-flex touch-manipulation items-center justify-center rounded-2xl bg-gradient-to-r from-opal-violetdeep to-opal-violet px-8 py-4 text-base font-medium tracking-wide text-white shadow-glow transition hover:-translate-y-0.5 hover:shadow-glow-cyan focus:outline-none focus:ring-2 focus:ring-opal-cyan/40 active:translate-y-0;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-8 py-4 text-base font-medium tracking-wide text-zinc-100 backdrop-blur-md transition hover:border-white/25 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20;
+    @apply inline-flex touch-manipulation items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-8 py-4 text-base font-medium tracking-wide text-zinc-100 backdrop-blur-md transition hover:border-opal-violetdeep/60 hover:bg-opal-violetdeep/15 hover:text-opal-violet focus:outline-none focus:ring-2 focus:ring-opal-violetdeep/30 active:translate-y-0;
   }
+}
+
+/* Theme system (class strategy): light by default, dark when .dark is present on html */
+html:not(.dark) body {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) .bg-night-950,
+html:not(.dark) .bg-night-950\/70,
+html:not(.dark) .bg-night-950\/50,
+html:not(.dark) .bg-night-900\/80,
+html:not(.dark) .bg-night-900\/40,
+html:not(.dark) .bg-night-900\/30 {
+  background-color: #f8fafc !important;
+}
+
+html:not(.dark) .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-zinc-100 {
+  color: #1f2937 !important;
+}
+
+html:not(.dark) .text-zinc-300,
+html:not(.dark) .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html:not(.dark) .text-zinc-500,
+html:not(.dark) .text-zinc-600 {
+  color: #64748b !important;
+}
+
+html:not(.dark) .border-white\/5,
+html:not(.dark) .border-white\/10,
+html:not(.dark) .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow:
+    0 10px 32px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(148, 163, 184, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+html:not(.dark) .btn-secondary {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Главная: в светлой теме светлый текст на всех кнопках (исправляет конфликт с .text-white) */
+html:not(.dark) .page-home .btn-primary,
+html:not(.dark) .page-home a.btn-primary,
+html:not(.dark) .page-home button.btn-primary {
+  color: #ffffff !important;
+}
+
+/* Как у .btn-secondary в тёмной теме при hover: border-opal-violetdeep/60, bg-opal-violetdeep/15, text-opal-violet */
+html:not(.dark) .page-home .btn-secondary {
+  background: rgba(29, 125, 252, 0.15) !important;
+  border-color: rgba(29, 125, 252, 0.6) !important;
+  color: #4b98ff !important;
+  backdrop-filter: blur(12px);
+}
+
+html:not(.dark) .page-home .btn-secondary:hover {
+  background: rgba(29, 125, 252, 0.22) !important;
+  border-color: rgba(29, 125, 252, 0.6) !important;
+  color: #4b98ff !important;
+}
+
+html:not(.dark) .bg-white\/5 {
+  background-color: rgba(29, 125, 252, 0.06) !important;
+}
+
+html:not(.dark) .bg-mesh-opal {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(29, 125, 252, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(29, 125, 252, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 45% at 10% 80%, rgba(29, 125, 252, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 90%, rgba(29, 125, 252, 0.04) 0%, transparent 45%) !important;
+}
+
+html:not(.dark) .bg-hero-fade {
+  background-image: linear-gradient(180deg, rgba(248, 250, 252, 0) 0%, #f8fafc 100%) !important;
+}
+
+html:not(.dark) summary,
+html:not(.dark) a,
+html:not(.dark) p,
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3 {
+  text-rendering: optimizeLegibility;
+}
+
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-icon {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.75) rotate(-30deg);
+  transition: opacity 220ms ease, transform 260ms ease;
+}
+
+.theme-icon.is-active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
 }

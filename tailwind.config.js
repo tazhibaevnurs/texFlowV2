@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: ['./templates/**/*.html'],
   theme: {
     extend: {
@@ -12,12 +13,12 @@ module.exports = {
           800: '#181822',
         },
         opal: {
-          violet: '#a78bfa',
-          violetdeep: '#7c3aed',
-          cyan: '#22d3ee',
-          mint: '#34d399',
-          rose: '#fb7185',
-          amber: '#fbbf24',
+          violet: '#4b98ff',
+          violetdeep: '#1d7dfc',
+          cyan: '#64adff',
+          mint: '#82beff',
+          rose: '#3a90ff',
+          amber: '#a5d0ff',
         },
       },
       fontFamily: {
@@ -32,15 +33,15 @@ module.exports = {
         '5xl': '2.5rem',
       },
       boxShadow: {
-        glow: '0 0 60px -12px rgba(167, 139, 250, 0.45)',
-        'glow-cyan': '0 0 70px -15px rgba(34, 211, 238, 0.4)',
-        'glow-rose': '0 0 50px -10px rgba(251, 113, 133, 0.35)',
+        glow: '0 0 60px -12px rgba(29, 125, 252, 0.45)',
+        'glow-cyan': '0 0 70px -15px rgba(29, 125, 252, 0.4)',
+        'glow-rose': '0 0 50px -10px rgba(29, 125, 252, 0.35)',
         glass: '0 8px 40px rgba(0, 0, 0, 0.45)',
         'inner-soft': 'inset 0 1px 0 rgba(255, 255, 255, 0.06)',
       },
       backgroundImage: {
         'mesh-opal':
-          'radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124, 58, 237, 0.22) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 85% 15%, rgba(34, 211, 238, 0.14) 0%, transparent 50%), radial-gradient(ellipse 60% 45% at 10% 80%, rgba(251, 113, 133, 0.1) 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 70% 90%, rgba(52, 211, 153, 0.08) 0%, transparent 45%)',
+          'radial-gradient(ellipse 80% 60% at 20% 10%, rgba(29, 125, 252, 0.28) 0%, transparent 55%), radial-gradient(ellipse 70% 50% at 85% 15%, rgba(29, 125, 252, 0.18) 0%, transparent 50%), radial-gradient(ellipse 60% 45% at 10% 80%, rgba(29, 125, 252, 0.12) 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 70% 90%, rgba(29, 125, 252, 0.1) 0%, transparent 45%)',
         'hero-fade': 'linear-gradient(180deg, rgba(6, 6, 10, 0) 0%, #06060a 100%)',
       },
       animation: {

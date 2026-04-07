@@ -3,8 +3,8 @@
 <html lang="ru" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}TexFlow — ERP для швейных цехов{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{% block title %}Швей Метрикс — ERP для швейных цехов{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,10 +12,28 @@
       rel="stylesheet"
     />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/brand/logo.svg' %}" />
+    <link rel="shortcut icon" href="{% static 'img/brand/logo.svg' %}" />
+    <link rel="apple-touch-icon" href="{% static 'img/brand/logo.svg' %}" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved === 'dark' ? 'dark' : 'light';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
     {% block extra_head %}{% endblock %}
   </head>
-  <body class="min-h-screen bg-night-950 text-zinc-100">
+  <body class="min-h-screen overflow-x-hidden bg-white pb-[env(safe-area-inset-bottom,0px)] text-slate-900 antialiased dark:bg-night-950 dark:text-zinc-100">
     {% if messages %}
       <div class="fixed left-0 right-0 top-24 z-[100] flex justify-center px-4" role="status">
         {% for message in messages %}
@@ -30,7 +48,65 @@
     {% block content %}{% endblock %}
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true, offset: 40 });
+      (function () {
+        var root = document.documentElement;
+        var storageKey = 'theme';
+
+        function getTheme() {
+          try {
+            var saved = window.localStorage.getItem(storageKey);
+            return saved === 'dark' ? 'dark' : 'light';
+          } catch (e) {
+            return 'light';
+          }
+        }
+
+        function setTheme(nextTheme) {
+          root.classList.toggle('dark', nextTheme === 'dark');
+          try {
+            window.localStorage.setItem(storageKey, nextTheme);
+          } catch (e) {}
+        }
+
+        function toggleTheme() {
+          var next = root.classList.contains('dark') ? 'light' : 'dark';
+          setTheme(next);
+          return next;
+        }
+
+        setTheme(getTheme());
+        window.toggleTheme = toggleTheme;
+
+        var toggle = document.getElementById('themeToggle');
+        if (toggle) {
+          var sunIcon = toggle.querySelector('[data-theme-icon="sun"]');
+          var moonIcon = toggle.querySelector('[data-theme-icon="moon"]');
+          var sync = function () {
+            var current = root.classList.contains('dark') ? 'dark' : 'light';
+            toggle.setAttribute('aria-pressed', current === 'dark' ? 'true' : 'false');
+            toggle.setAttribute('aria-label', current === 'dark' ? 'Включить светлую тему' : 'Включить темную тему');
+            if (sunIcon && moonIcon) {
+              sunIcon.classList.toggle('is-active', current === 'light');
+              moonIcon.classList.toggle('is-active', current === 'dark');
+            }
+          };
+          sync();
+
+          toggle.addEventListener('click', function () {
+            toggleTheme();
+            sync();
+          });
+        }
+
+        var mq = typeof window.matchMedia === 'function' ? window.matchMedia('(max-width: 1023px)') : null;
+        var narrow = mq ? mq.matches : false;
+        AOS.init({
+          duration: narrow ? 650 : 900,
+          easing: 'ease-out-cubic',
+          once: true,
+          offset: narrow ? 16 : 40,
+        });
+      })();
     </script>
   </body>
 </html>

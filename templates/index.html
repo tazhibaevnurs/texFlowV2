@@ -2,32 +2,135 @@
 {% load static %}
 
 {% block content %}
+<div class="page-home">
 <header
-  class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-night-950/70 backdrop-blur-xl"
+  class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/85 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl supports-[backdrop-filter]:bg-white/70 dark:border-white/5 dark:bg-night-950/70 dark:supports-[backdrop-filter]:bg-night-950/60"
   data-aos="fade-down"
 >
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-    <a href="#hero" class="text-lg font-semibold tracking-tight text-white">TexFlow</a>
-    <nav class="hidden items-center gap-8 text-sm font-medium text-zinc-400 lg:flex">
-      <a href="#why" class="transition hover:text-white">Почему Texflow</a>
-      <a href="#how" class="transition hover:text-white">Как работает</a>
-      <a href="#faq" class="transition hover:text-white">FAQ</a>
-      <a href="#about" class="transition hover:text-white">О нас</a>
-      <a href="#pricing" class="transition hover:text-white">Цены</a>
-      <a href="#contact" class="transition hover:text-white">Связаться</a>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8">
+    <a href="#hero" class="flex h-10 shrink-0 items-center sm:h-11">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="{% static 'img/brand/primary-logo-header.svg' %}" />
+        <img
+          src="{% static 'img/brand/primary-logo-header.svg' %}"
+          alt="Швей Метрикс"
+          class="block h-full w-auto max-w-[180px] object-contain object-left sm:max-w-[220px] lg:max-w-[240px]"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 lg:flex xl:gap-8 dark:text-zinc-400">
+      <a href="#why" class="transition hover:text-opal-violetdeep">Почему Швей Метрикс</a>
+      <a href="#how" class="transition hover:text-opal-violetdeep">Как работает</a>
+      <a href="#faq" class="transition hover:text-opal-violetdeep">FAQ</a>
+      <a href="#about" class="transition hover:text-opal-violetdeep">О нас</a>
+      <a href="#pricing" class="transition hover:text-opal-violetdeep">Цены</a>
+      <a href="#contact" class="transition hover:text-opal-violetdeep">Связаться</a>
     </nav>
-    <nav class="flex flex-wrap items-center justify-end gap-2 text-[11px] font-medium text-zinc-400 lg:hidden">
-      <a href="#about" class="rounded-full border border-white/10 px-2 py-1 hover:text-white">О нас</a>
-      <a href="#pricing" class="rounded-full border border-white/10 px-2 py-1 hover:text-white">Цены</a>
-      <a href="#contact" class="rounded-full border border-white/10 px-2 py-1 hover:text-white">Связаться</a>
-    </nav>
-    <a href="#contact" class="btn-primary hidden px-5 py-2.5 text-sm xl:inline-flex">Связаться</a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button
+        id="themeToggle"
+        type="button"
+        class="theme-toggle inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-300/80 bg-white text-slate-700 shadow-sm backdrop-blur-md transition hover:border-opal-violetdeep/60 hover:bg-opal-violetdeep/10 hover:text-opal-violetdeep dark:border-white/15 dark:bg-white/5 dark:text-zinc-200"
+        aria-label="Переключить тему"
+        aria-pressed="false"
+      >
+        <svg
+          data-theme-icon="sun"
+          class="theme-icon is-active h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"></path>
+        </svg>
+        <svg
+          data-theme-icon="moon"
+          class="theme-icon h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3c0 .37.02.74.07 1.1A7 7 0 0 0 19.9 12.7c.37.05.74.09 1.1.09z"></path>
+        </svg>
+      </button>
+      <a
+        href="#contact"
+        class="btn-primary hidden min-h-[44px] px-5 py-2.5 text-sm md:inline-flex"
+        >Связаться</a
+      >
+      <details class="relative lg:hidden">
+        <summary
+          class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-zinc-200 touch-manipulation [-webkit-tap-highlight-color:transparent] [&::-webkit-details-marker]:hidden"
+        >
+          <span class="sr-only">Открыть меню</span>
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <div
+          class="absolute right-0 top-[calc(100%+0.5rem)] z-50 w-[min(100vw-2rem,20rem)] rounded-2xl border border-white/10 bg-night-900/98 p-2 shadow-glass backdrop-blur-xl"
+        >
+          <nav class="flex flex-col gap-0.5">
+            <a
+              href="#why"
+              class="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-opal-violetdeep/15 hover:text-opal-violet active:bg-opal-violetdeep/20"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >Почему Швей Метрикс</a
+            >
+            <a
+              href="#how"
+              class="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-opal-violetdeep/15 hover:text-opal-violet active:bg-opal-violetdeep/20"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >Как работает</a
+            >
+            <a
+              href="#faq"
+              class="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-opal-violetdeep/15 hover:text-opal-violet active:bg-opal-violetdeep/20"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >FAQ</a
+            >
+            <a
+              href="#about"
+              class="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-opal-violetdeep/15 hover:text-opal-violet active:bg-opal-violetdeep/20"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >О нас</a
+            >
+            <a
+              href="#pricing"
+              class="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 hover:bg-opal-violetdeep/15 hover:text-opal-violet active:bg-opal-violetdeep/20"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >Цены</a
+            >
+            <a
+              href="#contact"
+              class="btn-primary mt-1 min-h-[44px] w-full justify-center px-4 py-3 text-sm shadow-glow"
+              onclick="this.closest('details')?.removeAttribute('open')"
+              >Связаться</a
+            >
+          </nav>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
 
 <main>
   <!-- Hero -->
-  <section id="hero" class="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
+  <section
+    id="hero"
+    class="relative overflow-hidden pb-16 pt-[calc(7rem+env(safe-area-inset-top,0px))] sm:pb-20 sm:pt-36 sm:pb-28"
+  >
     <div class="pointer-events-none absolute inset-0 bg-mesh-opal"></div>
     <div
       class="pointer-events-none absolute -left-32 top-20 h-96 w-96 rounded-full bg-opal-violetdeep/25 blur-[120px] animate-pulse-soft"
@@ -46,17 +149,19 @@
           ERP для швейного производства
         </p>
         <h1
-          class="text-balance text-4xl font-semibold tracking-hero text-white sm:text-6xl lg:text-7xl"
+          class="text-balance text-3xl font-semibold leading-tight tracking-hero text-slate-900 sm:text-6xl lg:text-7xl dark:text-white"
           data-aos="fade-up"
           data-aos-delay="80"
         >
           Производство сложное.
-          <span class="block bg-gradient-to-r from-opal-violet via-opal-cyan to-opal-mint bg-clip-text text-transparent"
+          <span
+            class="mt-1 block text-[#69c8ff] drop-shadow-[0_0_18px_rgba(0,98,245,0.55)] sm:mt-0"
+            style="background-image: linear-gradient(90deg, #69c8ff 0%, #2d8fff 52%, #9ddcff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;"
             >Управлять им — проще.</span
           >
         </h1>
         <p
-          class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl"
+          class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:mt-8 sm:text-lg md:text-xl dark:text-zinc-400"
           data-aos="fade-up"
           data-aos-delay="120"
         >
@@ -64,12 +169,12 @@
           и сосредоточьтесь на том, что важно для бизнеса.
         </p>
         <div
-          class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5"
+          class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-5"
           data-aos="fade-up"
           data-aos-delay="160"
         >
-          <a href="#contact" class="btn-primary w-full sm:w-auto">Попробовать бесплатно</a>
-          <a href="#pricing" class="btn-secondary w-full sm:w-auto">Рассчитать стоимость</a>
+          <a href="#contact" class="btn-primary min-h-[48px] w-full justify-center sm:w-auto">Попробовать бесплатно</a>
+          <a href="#pricing" class="btn-secondary min-h-[48px] w-full justify-center sm:w-auto">Рассчитать стоимость</a>
         </div>
       </div>
 
@@ -80,13 +185,13 @@
       >
         <div class="glass-panel relative overflow-hidden p-2 sm:p-3 animate-float">
           <div
-            class="flex aspect-[21/9] items-center justify-center rounded-3xl bg-gradient-to-br from-night-850 via-night-900 to-night-800 sm:rounded-[1.75rem]"
+            class="flex min-h-[220px] aspect-[4/3] items-center justify-center rounded-2xl bg-gradient-to-br from-night-850 via-night-900 to-night-800 px-3 py-8 sm:aspect-[21/9] sm:min-h-0 sm:rounded-[1.75rem] sm:px-6 sm:py-0"
           >
             <div class="text-center">
-              <p class="text-sm font-medium uppercase tracking-widecap text-zinc-500">
-                Посмотрите, как работает Texflow
+              <p class="text-xs font-medium uppercase tracking-widecap text-zinc-500 sm:text-sm">
+                Посмотрите, как работает Швей Метрикс
               </p>
-              <p class="mt-2 text-lg text-zinc-300">Интерактивный обзор интерфейса</p>
+              <p class="mt-2 text-base text-zinc-300 sm:text-lg">Интерактивный обзор интерфейса</p>
               <div
                 class="mx-auto mt-6 flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-glow"
               >
@@ -100,36 +205,36 @@
   </section>
 
   <!-- About -->
-  <section id="about" class="relative py-24 sm:py-32">
+  <section id="about" class="relative scroll-mt-24 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div data-aos="fade-right">
-          <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">О компании Texflow</p>
-          <h2 class="mt-4 text-3xl font-semibold tracking-hero text-white sm:text-4xl">
+          <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">О компании Швей Метрикс</p>
+          <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
             Надёжное ERP для швейных цехов
           </h2>
-          <p class="mt-6 text-lg leading-relaxed text-zinc-400">
-            Texflow — ведущий разработчик ERP-решений для швейных цехов. Наш опыт в автоматизации
+          <p class="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
+            Швей Метрикс — ведущий разработчик ERP-решений для швейных цехов. Наш опыт в автоматизации
             производства одежды и текстиля — более 3 лет. Мы помогаем сосредоточиться на ключевых
             аспектах бизнеса и добиваться измеримых результатов.
           </p>
         </div>
-        <div class="grid grid-cols-2 gap-4 sm:gap-5">
-          <div class="glass-panel p-6 sm:p-8 animate-float" data-aos="fade-up">
-            <p class="text-4xl font-semibold text-white">30+</p>
-            <p class="mt-2 text-sm text-zinc-400">цехов успешно внедрили TexFlow</p>
+        <div class="grid grid-cols-2 gap-3 sm:gap-5">
+          <div class="glass-panel p-4 sm:p-8 animate-float" data-aos="fade-up">
+            <p class="text-3xl font-semibold text-white sm:text-4xl">30+</p>
+            <p class="mt-2 text-xs leading-snug text-zinc-400 sm:text-sm">цехов успешно внедрили Швей Метрикс</p>
           </div>
-          <div class="glass-panel p-6 sm:p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="80">
-            <p class="text-4xl font-semibold text-white">700</p>
-            <p class="mt-2 text-sm text-zinc-400">сотрудников ежедневно в приложении</p>
+          <div class="glass-panel p-4 sm:p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="80">
+            <p class="text-3xl font-semibold text-white sm:text-4xl">700</p>
+            <p class="mt-2 text-xs leading-snug text-zinc-400 sm:text-sm">сотрудников ежедневно в приложении</p>
           </div>
-          <div class="glass-panel p-6 sm:p-8" data-aos="fade-up" data-aos-delay="120">
-            <p class="text-4xl font-semibold text-white">12+</p>
-            <p class="mt-2 text-sm text-zinc-400">часов экономии на управление цехом</p>
+          <div class="glass-panel p-4 sm:p-8" data-aos="fade-up" data-aos-delay="120">
+            <p class="text-3xl font-semibold text-white sm:text-4xl">12+</p>
+            <p class="mt-2 text-xs leading-snug text-zinc-400 sm:text-sm">часов экономии на управление цехом</p>
           </div>
-          <div class="glass-panel p-6 sm:p-8" data-aos="fade-up" data-aos-delay="160">
-            <p class="text-4xl font-semibold text-white">25%</p>
-            <p class="mt-2 text-sm text-zinc-400">экономии на производственные расходы</p>
+          <div class="glass-panel p-4 sm:p-8" data-aos="fade-up" data-aos-delay="160">
+            <p class="text-3xl font-semibold text-white sm:text-4xl">25%</p>
+            <p class="mt-2 text-xs leading-snug text-zinc-400 sm:text-sm">экономии на производственные расходы</p>
           </div>
         </div>
       </div>
@@ -137,20 +242,20 @@
   </section>
 
   <!-- Why -->
-  <section id="why" class="relative border-y border-white/5 bg-night-900/40 py-24 sm:py-32">
+  <section id="why" class="relative scroll-mt-24 border-y border-white/5 bg-night-900/40 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="pointer-events-none absolute inset-0 bg-mesh-opal opacity-40"></div>
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
         <p class="text-xs font-medium uppercase tracking-widecap text-opal-mint">Преимущества</p>
-        <h2 class="mt-4 text-3xl font-semibold tracking-hero text-white sm:text-4xl">
+        <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
           Преимущества нашего приложения
         </h2>
-        <p class="mt-4 text-lg text-zinc-400">
+        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
           Откройте новые возможности для швейного предприятия с ERP, созданным под ваши процессы.
         </p>
       </div>
-      <div class="mt-16 grid gap-6 md:grid-cols-3">
-        <article class="glass-panel p-8 animate-float" data-aos="fade-up">
+      <div class="mt-12 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-3">
+        <article class="glass-panel p-6 sm:p-8 animate-float" data-aos="fade-up">
           <div
             class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-violetdeep/30 text-lg"
           >
@@ -161,7 +266,7 @@
             ERP разработано для швейных цехов: производство, качество и контроль в одном контуре.
           </p>
         </article>
-        <article class="glass-panel p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="80">
+        <article class="glass-panel p-6 sm:p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="80">
           <div
             class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-cyan/20 text-lg"
           >
@@ -172,7 +277,7 @@
             Автоматизация ключевых процессов и интеграция с другими системами для единого управления.
           </p>
         </article>
-        <article class="glass-panel p-8 animate-float" data-aos="fade-up" data-aos-delay="160">
+        <article class="glass-panel p-6 sm:p-8 animate-float" data-aos="fade-up" data-aos-delay="160">
           <div
             class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-mint/20 text-lg font-semibold text-opal-mint"
           >
@@ -188,21 +293,21 @@
   </section>
 
   <!-- Capabilities -->
-  <section class="py-24 sm:py-32">
+  <section class="py-16 sm:py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
         <p class="text-xs font-medium uppercase tracking-widecap text-opal-rose">Возможности</p>
-        <h2 class="mt-4 text-3xl font-semibold tracking-hero text-white sm:text-4xl">
-          Чем вы можете управлять в TexFlow
+        <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
+          Чем вы можете управлять в Швей Метрикс
         </h2>
-        <p class="mt-4 text-lg text-zinc-400">
+        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
           Многофункциональные инструменты для полного контроля и эффективного управления бизнесом.
         </p>
       </div>
 
-      <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {% for item in capabilities %}
-        <div class="glass-panel p-6" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 40 %}">
+        <div class="glass-panel p-5 sm:p-6" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 40 %}">
           <h3 class="text-lg font-semibold text-white">{{ item.title }}</h3>
           <p class="mt-2 text-sm leading-relaxed text-zinc-400">{{ item.text }}</p>
         </div>
@@ -212,43 +317,45 @@
   </section>
 
   <!-- Mid CTA -->
-  <section class="relative py-20">
+  <section class="relative py-14 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div
-        class="glass-panel relative overflow-hidden px-8 py-12 sm:px-12 sm:py-16"
+        class="glass-panel relative overflow-hidden px-5 py-10 shadow-xl sm:px-12 sm:py-16 dark:shadow-glass"
         data-aos="zoom-in"
       >
-        <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-opal-violet/25 blur-3xl"></div>
-        <div class="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <h2 class="text-2xl font-semibold tracking-hero text-white sm:text-3xl">
+        <div
+          class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-sky-100/45 blur-[52px] dark:-right-20 dark:-top-20 dark:h-64 dark:w-64 dark:bg-opal-violet/22 dark:blur-3xl"
+        ></div>
+        <div class="relative flex flex-col items-stretch gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div class="min-w-0">
+            <h2 class="text-xl font-semibold tracking-hero text-slate-900 sm:text-2xl md:text-3xl dark:text-white">
               Присоединяйтесь — и увидите, как меняется бизнес
             </h2>
-            <p class="mt-3 max-w-xl text-zinc-400">
-              Более 100 цехов уже используют TexFlow для управления производством каждый день.
+            <p class="mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-zinc-400">
+              Более 100 цехов уже используют Швей Метрикс для управления производством каждый день.
             </p>
           </div>
-          <a href="#contact" class="btn-primary shrink-0">Попробовать бесплатно</a>
+          <a href="#contact" class="btn-primary min-h-[48px] w-full shrink-0 justify-center lg:w-auto">Попробовать бесплатно</a>
         </div>
-        <p class="relative mt-8 text-sm text-zinc-500">100+ цехов успешно внедрили TexFlow</p>
+        <p class="relative mt-8 text-sm text-zinc-500">100+ цехов успешно внедрили Швей Метрикс</p>
       </div>
     </div>
   </section>
 
   <!-- How ERP helps -->
-  <section id="how" class="border-t border-white/5 bg-night-900/30 py-24 sm:py-32">
+  <section id="how" class="scroll-mt-24 border-t border-white/5 bg-night-900/30 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold tracking-hero text-white sm:text-4xl">
+        <h2 class="text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
           Как ERP помогает швейному производству
         </h2>
-        <p class="mt-4 text-lg text-zinc-400">
+        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
           Автоматизация заказов, запасов и планирования сокращает время задач и повышает эффективность
           ресурсов.
         </p>
       </div>
-      <div class="mt-16 grid gap-8 lg:grid-cols-2">
-        <div class="glass-panel flex flex-col justify-between p-8 sm:p-10" data-aos="fade-up">
+      <div class="mt-12 grid gap-6 sm:mt-16 sm:gap-8 lg:grid-cols-2">
+        <div class="glass-panel flex flex-col justify-between gap-6 p-6 sm:p-10" data-aos="fade-up">
           <div>
             <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">Мониторинг</p>
             <h3 class="mt-3 text-2xl font-semibold text-white">Мониторинг фабрики</h3>
@@ -256,9 +363,9 @@
               Удобный интерфейс для управления швейным цехом в реальном времени.
             </p>
           </div>
-          <a href="#contact" class="btn-secondary mt-8 self-start">Заказать</a>
+          <a href="#contact" class="btn-secondary min-h-[48px] w-full self-stretch sm:mt-2 sm:w-auto sm:self-start">Заказать</a>
         </div>
-        <div class="glass-panel flex flex-col justify-between p-8 sm:p-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="glass-panel flex flex-col justify-between p-6 sm:p-10" data-aos="fade-up" data-aos-delay="100">
           <div>
             <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Зарплаты</p>
             <h3 class="mt-3 text-2xl font-semibold text-white">Расчёт зарплат</h3>
@@ -272,17 +379,17 @@
   </section>
 
   <!-- Product story -->
-  <section class="py-24 sm:py-32">
+  <section class="py-16 sm:py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div data-aos="fade-right">
           <p class="text-xs font-medium uppercase tracking-widecap text-opal-amber">Управление производством</p>
-          <h2 class="mt-4 text-3xl font-semibold tracking-hero text-white sm:text-4xl">
+          <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
             Эффективное решение для оптимизации бизнеса
           </h2>
-          <p class="mt-6 text-lg text-zinc-400 leading-relaxed">
+          <p class="mt-6 text-base text-zinc-400 leading-relaxed sm:text-lg">
             Идеальное ПО ERP: повысьте эффективность швейного производства. Стандартизируйте процессы
-            продаж и маркетинга — уникальный пакет для управления бизнесом от Texflow.
+            продаж и маркетинга — уникальный пакет для управления бизнесом от Швей Метрикс.
           </p>
         </div>
         <div class="space-y-4" data-aos="fade-left">
@@ -310,35 +417,37 @@
   </section>
 
   <!-- Lead + pricing anchor -->
-  <section id="pricing" class="relative border-y border-white/5 py-24 sm:py-32">
+  <section id="pricing" class="relative scroll-mt-24 border-y border-white/5 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="pointer-events-none absolute inset-0 bg-mesh-opal opacity-30"></div>
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div data-aos="fade-right">
           <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">Связаться</p>
-          <h2 class="mt-4 text-3xl font-semibold tracking-hero text-white sm:text-4xl">
+          <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
             Оптимизировать · Управлять · Процветать
           </h2>
-          <p class="mt-4 text-lg text-zinc-400">
+          <p class="mt-4 text-base text-zinc-400 sm:text-lg">
             Увеличьте эффективность и оптимизируйте процессы с нашим ERP. Оставьте заявку — подберём
             формат внедрения и стоимость.
           </p>
         </div>
-        <div class="glass-panel p-8 sm:p-10" data-aos="fade-left">
+        <div class="glass-panel p-6 sm:p-10" data-aos="fade-left">
           <form method="post" class="space-y-5">
             {% csrf_token %}
             <div>
-              <label for="email" class="block text-sm font-medium text-zinc-300">Email</label>
+              <label for="email" class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300">Email</label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="texflow.info@gmail.com"
-                class="mt-2 w-full rounded-2xl border border-white/10 bg-night-900/80 px-4 py-3 text-sm text-white placeholder:text-zinc-600 outline-none ring-0 transition focus:border-opal-cyan/50 focus:ring-2 focus:ring-opal-cyan/20"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="info@shveymetrics.kg"
+                class="w-full min-h-[48px] rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 placeholder:text-slate-400 outline-none ring-0 transition focus:border-opal-violetdeep focus:ring-2 focus:ring-opal-violetdeep/25 dark:border-white/10 dark:bg-night-900/80 dark:text-white dark:placeholder:text-zinc-600 dark:focus:border-opal-cyan/50 dark:focus:ring-opal-cyan/20"
               />
             </div>
-            <button type="submit" class="btn-primary w-full justify-center">Оставить заявку</button>
+            <button type="submit" class="btn-primary min-h-[48px] w-full justify-center">Оставить заявку</button>
             <p class="text-xs text-zinc-500">
               Нажимая кнопку, вы соглашаетесь с обработкой данных. Подробнее в документах ниже.
             </p>
@@ -349,32 +458,47 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-24 sm:py-32">
+  <section id="faq" class="scroll-mt-24 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-3xl font-semibold tracking-hero text-white sm:text-4xl" data-aos="fade-up">
+      <h2 class="text-center text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl" data-aos="fade-up">
         Частые вопросы
       </h2>
-      <div class="mt-10 space-y-3">
-        <details class="glass-panel group px-6 py-4" data-aos="fade-up">
-          <summary class="cursor-pointer list-none text-left font-medium text-white marker:content-none">
-            Как быстро можно внедрить TexFlow?
+      <div class="mt-8 space-y-3 sm:mt-10">
+        <details class="glass-panel group px-4 py-3 sm:px-6 sm:py-4" data-aos="fade-up">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-3 pr-1 text-left text-sm font-medium leading-snug text-slate-900 marker:content-none sm:text-base dark:text-white"
+          >
+            <span>Как быстро можно внедрить Швей Метрикс?</span>
+            <svg class="h-4 w-4 shrink-0 text-opal-violetdeep transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+            </svg>
           </summary>
           <p class="mt-3 text-sm leading-relaxed text-zinc-400">
             Срок зависит от масштаба цеха и интеграций. Типичный старт — от нескольких недель с
             поэтапным подключением модулей.
           </p>
         </details>
-        <details class="glass-panel group px-6 py-4" data-aos="fade-up" data-aos-delay="60">
-          <summary class="cursor-pointer list-none text-left font-medium text-white marker:content-none">
-            Есть ли обучение для сотрудников?
+        <details class="glass-panel group px-4 py-3 sm:px-6 sm:py-4" data-aos="fade-up" data-aos-delay="60">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-3 pr-1 text-left text-sm font-medium leading-snug text-slate-900 marker:content-none sm:text-base dark:text-white"
+          >
+            <span>Есть ли обучение для сотрудников?</span>
+            <svg class="h-4 w-4 shrink-0 text-opal-violetdeep transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+            </svg>
           </summary>
           <p class="mt-3 text-sm leading-relaxed text-zinc-400">
             Да, мы помогаем командам освоить интерфейс и процессы, чтобы переход прошёл без простоев.
           </p>
         </details>
-        <details class="glass-panel group px-6 py-4" data-aos="fade-up" data-aos-delay="120">
-          <summary class="cursor-pointer list-none text-left font-medium text-white marker:content-none">
-            Можно ли интегрироваться с текущими системами?
+        <details class="glass-panel group px-4 py-3 sm:px-6 sm:py-4" data-aos="fade-up" data-aos-delay="120">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-3 pr-1 text-left text-sm font-medium leading-snug text-slate-900 marker:content-none sm:text-base dark:text-white"
+          >
+            <span>Можно ли интегрироваться с текущими системами?</span>
+            <svg class="h-4 w-4 shrink-0 text-opal-violetdeep transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
+            </svg>
           </summary>
           <p class="mt-3 text-sm leading-relaxed text-zinc-400">
             Поддерживается интеграция с рядом учётных и CRM-решений — уточните детали у нашей команды.
@@ -385,13 +509,13 @@
   </section>
 
   <!-- Trust -->
-  <section class="border-t border-white/5 bg-night-900/40 py-24">
+  <section class="border-t border-white/5 bg-night-900/40 py-16 sm:py-24">
     <div class="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8" data-aos="fade-up">
       <h2 class="text-2xl font-semibold text-white sm:text-3xl">Видеоотзывы от наших партнёров</h2>
       <p class="mx-auto mt-4 max-w-2xl text-zinc-400">
         Раздел с видео можно подключить позже — здесь зарезервирован премиальный блок под ваш контент.
       </p>
-      <div class="mx-auto mt-10 max-w-4xl rounded-[2rem] border border-dashed border-white/10 bg-night-950/50 py-16 text-zinc-500">
+      <div class="mx-auto mt-8 max-w-4xl rounded-3xl border border-dashed border-white/10 bg-night-950/50 px-4 py-12 text-sm text-zinc-500 sm:mt-10 sm:rounded-[2rem] sm:py-16 sm:text-base">
         Место для видеоплеера / встраивания
       </div>
       <h3 class="mt-16 text-xl font-semibold text-white">Нам доверяют более 100 владельцев швейных цехов</h3>
@@ -404,11 +528,20 @@
 </main>
 
 <!-- Footer / Contact -->
-<footer id="contact" class="border-t border-white/10 bg-night-950 pb-12 pt-16">
+<footer id="contact" class="scroll-mt-24 border-t border-white/10 bg-night-950 pb-[max(3rem,env(safe-area-inset-bottom,0px))] pt-12 sm:scroll-mt-28 sm:pb-12 sm:pt-16">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
       <div>
-        <p class="text-lg font-semibold text-white">TexFlow</p>
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="{% static 'img/brand/primary-logo.svg' %}" />
+          <img
+            src="{% static 'img/brand/white-logo.svg' %}"
+            alt="Швей Метрикс"
+            class="h-6 w-auto max-w-[180px] object-contain sm:h-7 sm:max-w-[220px]"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
         <p class="mt-4 text-sm text-zinc-400 leading-relaxed">
           Помощь и поддержка, внедрение и сопровождение ERP для швейных цехов.
         </p>
@@ -416,21 +549,29 @@
       <div>
         <p class="text-sm font-medium uppercase tracking-widecap text-zinc-500">Услуги</p>
         <ul class="mt-4 space-y-2 text-sm text-zinc-400">
-          <li><a href="#why" class="hover:text-white">Преимущества</a></li>
-          <li><a href="#pricing" class="hover:text-white">Сроки и цены</a></li>
-          <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+          <li><a href="#why" class="block py-1 hover:text-opal-violetdeep">Преимущества</a></li>
+          <li><a href="#pricing" class="block py-1 hover:text-opal-violetdeep">Сроки и цены</a></li>
+          <li><a href="#faq" class="block py-1 hover:text-opal-violetdeep">FAQ</a></li>
         </ul>
       </div>
       <div>
         <p class="text-sm font-medium uppercase tracking-widecap text-zinc-500">Ссылки</p>
         <ul class="mt-4 space-y-2 text-sm text-zinc-400">
           <li>
-            <a href="https://project8526256.tilda.ws/privacy-policy" class="hover:text-white" target="_blank" rel="noopener noreferrer"
+            <a
+              href="https://project8526256.tilda.ws/privacy-policy"
+              class="block py-1 hover:text-opal-violetdeep"
+              target="_blank"
+              rel="noopener noreferrer"
               >Политика конфиденциальности</a
             >
           </li>
           <li>
-            <a href="https://project8526256.tilda.ws/termsofuse" class="hover:text-white" target="_blank" rel="noopener noreferrer"
+            <a
+              href="https://project8526256.tilda.ws/termsofuse"
+              class="block py-1 hover:text-opal-violetdeep"
+              target="_blank"
+              rel="noopener noreferrer"
               >Пользовательское соглашение</a
             >
           </li>
@@ -440,14 +581,15 @@
         <p class="text-sm font-medium uppercase tracking-widecap text-zinc-500">Контакты</p>
         <ul class="mt-4 space-y-3 text-sm text-zinc-400">
           <li>г. Бишкек, Калык Акиева 111а</li>
-          <li><a href="tel:+996559888184" class="hover:text-white">+996 (559) 88-81-84</a></li>
-          <li><a href="mailto:texflow.info@gmail.com" class="hover:text-white">texflow.info@gmail.com</a></li>
+          <li><a href="tel:+996559888184" class="hover:text-opal-violetdeep">+996 (559) 88-81-84</a></li>
+          <li><a href="mailto:info@shveymetrics.kg" class="hover:text-opal-violetdeep">info@shveymetrics.kg</a></li>
         </ul>
       </div>
     </div>
     <p class="mt-12 border-t border-white/5 pt-8 text-center text-xs text-zinc-600">
-      © {% now "Y" %} TexFlow. Все права защищены.
+      © {% now "Y" %} Швей Метрикс. Все права защищены.
     </p>
   </div>
 </footer>
+</div>
 {% endblock %}
