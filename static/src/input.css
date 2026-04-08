@@ -72,8 +72,70 @@ html:not(.dark) h3 {
   transform: scale(1) rotate(0deg);
 }
 
+/* Hero: двухколоночный layout, картинка без фона/тени, входные анимации */
+@keyframes heroFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.hero-dashboard-img-wrap {
+  background: transparent;
+  box-shadow: none;
+}
+
+.hero-dashboard-img {
+  width: 100%;
+  max-width: 620px;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-animate-left {
+  animation: heroFadeInUp 0.75s ease-out both;
+  animation-delay: 0s;
+}
+
+.hero-animate-right {
+  animation: heroFadeInRight 0.75s ease-out both;
+  animation-delay: 0.2s;
+}
+
+@media (max-width: 767px) {
+  .hero-dashboard-img {
+    max-width: 100%;
+  }
+}
+
 /* Анимации декора: отключаем при системном «уменьшить движение» */
 @media (prefers-reduced-motion: reduce) {
+  .hero-animate-left,
+  .hero-animate-right {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
   .animate-float,
   .animate-float-delayed,
   .animate-stat-card-3d {
