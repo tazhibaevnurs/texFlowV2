@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -147,6 +148,10 @@ STORAGES = {
         'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
     },
 }
+
+# Долгий кэш для статики в продакшене (gzip/brotli уже даёт Whitenoise).
+if not DEBUG:
+    WHITENOISE_MAX_AGE = 31536000
 
 # HTTPS на Vercel (иначе POST / формы могут падать по CSRF)
 CSRF_TRUSTED_ORIGINS = [
