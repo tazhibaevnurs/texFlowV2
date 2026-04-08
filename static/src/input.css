@@ -34,100 +34,7 @@
   }
 }
 
-/* Theme system (class strategy): light by default, dark when .dark is present on html */
-html:not(.dark) body {
-  background: #f8fafc !important;
-  color: #0f172a !important;
-}
-
-html:not(.dark) .bg-night-950,
-html:not(.dark) .bg-night-950\/70,
-html:not(.dark) .bg-night-950\/50,
-html:not(.dark) .bg-night-900\/80,
-html:not(.dark) .bg-night-900\/40,
-html:not(.dark) .bg-night-900\/30 {
-  background-color: #f8fafc !important;
-}
-
-html:not(.dark) .text-white {
-  color: #0f172a !important;
-}
-
-/* Демо-дашборд: полноэкранный тёмный слой — белый текст не перекрашиваем в «светлую тему» */
-html:not(.dark) .dashboard-preview .text-white {
-  color: #ffffff !important;
-}
-
-html:not(.dark) .text-zinc-100 {
-  color: #1f2937 !important;
-}
-
-html:not(.dark) .text-zinc-300,
-html:not(.dark) .text-zinc-400 {
-  color: #475569 !important;
-}
-
-html:not(.dark) .text-zinc-500,
-html:not(.dark) .text-zinc-600 {
-  color: #64748b !important;
-}
-
-html:not(.dark) .border-white\/5,
-html:not(.dark) .border-white\/10,
-html:not(.dark) .border-white\/15 {
-  border-color: rgba(15, 23, 42, 0.12) !important;
-}
-
-html:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(15, 23, 42, 0.1) !important;
-  box-shadow:
-    0 10px 32px rgba(15, 23, 42, 0.06),
-    0 0 0 1px rgba(148, 163, 184, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
-}
-
-html:not(.dark) .btn-secondary {
-  background: #ffffff !important;
-  color: #0f172a !important;
-}
-
-/* Главная: в светлой теме светлый текст на всех кнопках (исправляет конфликт с .text-white) */
-html:not(.dark) .page-home .btn-primary,
-html:not(.dark) .page-home a.btn-primary,
-html:not(.dark) .page-home button.btn-primary {
-  color: #ffffff !important;
-}
-
-/* Как у .btn-secondary в тёмной теме при hover: border-opal-violetdeep/60, bg-opal-violetdeep/15, text-opal-violet */
-html:not(.dark) .page-home .btn-secondary {
-  background: rgba(29, 125, 252, 0.15) !important;
-  border-color: rgba(29, 125, 252, 0.6) !important;
-  color: #4b98ff !important;
-  backdrop-filter: blur(12px);
-}
-
-html:not(.dark) .page-home .btn-secondary:hover {
-  background: rgba(29, 125, 252, 0.22) !important;
-  border-color: rgba(29, 125, 252, 0.6) !important;
-  color: #4b98ff !important;
-}
-
-html:not(.dark) .bg-white\/5 {
-  background-color: rgba(29, 125, 252, 0.06) !important;
-}
-
-html:not(.dark) .bg-mesh-opal {
-  background-image:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(29, 125, 252, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 85% 15%, rgba(29, 125, 252, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 45% at 10% 80%, rgba(29, 125, 252, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 70% 90%, rgba(29, 125, 252, 0.04) 0%, transparent 45%) !important;
-}
-
-html:not(.dark) .bg-hero-fade {
-  background-image: linear-gradient(180deg, rgba(248, 250, 252, 0) 0%, #f8fafc 100%) !important;
-}
+/* Светлая тема: static/css/light-theme-improved.css (подключается в base.html) */
 
 html:not(.dark) summary,
 html:not(.dark) a,
@@ -138,10 +45,10 @@ html:not(.dark) h3 {
   text-rendering: optimizeLegibility;
 }
 
-/* Форма заявки на тёмной карточке: автозаполнение не заливает поле белым */
-.page-home .lead-form-input:-webkit-autofill,
-.page-home .lead-form-input:-webkit-autofill:hover,
-.page-home .lead-form-input:-webkit-autofill:focus {
+/* Форма заявки в тёмной теме: автозаполнение под тёмную карточку */
+.dark .page-home .lead-form-input:-webkit-autofill,
+.dark .page-home .lead-form-input:-webkit-autofill:hover,
+.dark .page-home .lead-form-input:-webkit-autofill:focus {
   -webkit-text-fill-color: #f4f4f5;
   caret-color: #f4f4f5;
   transition: background-color 99999s ease-out;
@@ -168,12 +75,53 @@ html:not(.dark) h3 {
 /* Анимации декора: отключаем при системном «уменьшить движение» */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
-  .animate-float-delayed {
+  .animate-float-delayed,
+  .animate-stat-card-3d {
     animation: none !important;
   }
   .animate-pulse-soft {
     animation: none !important;
     opacity: 0.65;
   }
+  .about-stat-card:hover {
+    transform: none !important;
+    z-index: auto;
+  }
+  .about-stat-grid {
+    perspective: none;
+  }
+}
+
+/* About: сетка статистики — перспектива и 3D при наведении */
+.about-stat-grid {
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+}
+
+.about-stat-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition:
+    transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.45s ease;
+}
+
+.about-stat-grid > .about-stat-card:nth-child(1) {
+  animation-delay: 0s;
+}
+.about-stat-grid > .about-stat-card:nth-child(2) {
+  animation-delay: 1.85s;
+}
+.about-stat-grid > .about-stat-card:nth-child(3) {
+  animation-delay: 3.65s;
+}
+.about-stat-grid > .about-stat-card:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.about-stat-card:hover {
+  animation-play-state: paused;
+  transform: translate3d(0, -14px, 0) rotateX(6deg) rotateY(-12deg) scale(1.03);
+  z-index: 2;
 }
 

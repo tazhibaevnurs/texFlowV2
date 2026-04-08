@@ -47,6 +47,7 @@ module.exports = {
       animation: {
         float: 'float 11s ease-in-out infinite',
         'float-delayed': 'float 13s ease-in-out infinite 1.2s',
+        'stat-card-3d': 'statCard3d 7s ease-in-out infinite',
         'pulse-soft': 'pulseSoft 6s ease-in-out infinite',
         'success-pop': 'successPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both',
         'success-shimmer': 'successShimmer 2.2s ease-in-out infinite',
@@ -55,6 +56,20 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        statCard3d: {
+          '0%, 100%': {
+            transform:
+              'translate3d(0, 0, 0) rotateX(2deg) rotateY(-4deg) translateZ(0)',
+          },
+          '33%': {
+            transform:
+              'translate3d(0, -8px, 0) rotateX(-3deg) rotateY(5deg) translateZ(6px)',
+          },
+          '66%': {
+            transform:
+              'translate3d(0, -4px, 0) rotateX(4deg) rotateY(-3deg) translateZ(10px)',
+          },
         },
         pulseSoft: {
           '0%, 100%': { opacity: '0.55' },
