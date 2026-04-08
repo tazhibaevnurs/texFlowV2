@@ -6,6 +6,11 @@
   html {
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
   body {
     @apply bg-white text-slate-900 antialiased;
   }
@@ -159,3 +164,16 @@ html:not(.dark) h3 {
   opacity: 1;
   transform: scale(1) rotate(0deg);
 }
+
+/* Анимации декора: отключаем при системном «уменьшить движение» */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed {
+    animation: none !important;
+  }
+  .animate-pulse-soft {
+    animation: none !important;
+    opacity: 0.65;
+  }
+}
+

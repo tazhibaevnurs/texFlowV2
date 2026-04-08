@@ -56,12 +56,23 @@ CAPABILITIES_FALLBACK = [
     },
 ]
 
+# Иконки для блока «Возможности» на лендинге (порядок совпадает с CAPABILITIES_FALLBACK / БД)
+CAPABILITY_ICONS = ['📋', '⚙️', '👷', '💰', '👥', '📈']
+
 
 def _get_capabilities():
     qs = Capability.objects.filter(is_active=True).order_by('sort_order', 'id')
     if qs.exists():
         return list(qs)
     return CAPABILITIES_FALLBACK
+
+
+def _capabilities_with_icons(capabilities):
+    rows = []
+    for i, c in enumerate(capabilities):
+        emoji = CAPABILITY_ICONS[i] if i < len(CAPABILITY_ICONS) else ''
+        rows.append({'emoji': emoji, 'title': c.title, 'text': c.text})
+    return rows
 
 
 def index(request):
@@ -92,12 +103,14 @@ def index(request):
     else:
         form = LeadForm()
 
+    caps = _get_capabilities()
     return render(
         request,
         'index.html',
         {
             'content': landing,
-            'capabilities': _get_capabilities(),
+            'capabilities': caps,
+            'capabilities_rows': _capabilities_with_icons(caps),
             'lead_form': form,
         },
     )

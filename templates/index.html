@@ -173,7 +173,13 @@
           data-aos-delay="160"
         >
           <a href="#contact" class="btn-primary min-h-[48px] w-full justify-center sm:w-auto">Попробовать бесплатно</a>
-          <a href="#pricing" class="btn-secondary min-h-[48px] w-full justify-center sm:w-auto">Рассчитать стоимость</a>
+          <button
+            type="button"
+            data-open-dashboard
+            class="btn-secondary min-h-[48px] w-full justify-center sm:w-auto"
+          >
+            Смотреть демо
+          </button>
         </div>
       </div>
 
@@ -221,13 +227,13 @@
       <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div data-aos="fade-right">
           <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">О компании Швей Метрикс</p>
-          <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
+          <h2 class="mt-4 text-2xl font-semibold leading-tight tracking-hero text-white sm:text-3xl md:text-4xl">
             Надёжное ERP для швейных цехов
           </h2>
           <p class="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
-            Швей Метрикс — ведущий разработчик ERP-решений для швейных цехов. Наш опыт в автоматизации
-            производства одежды и текстиля — более 3 лет. Мы помогаем сосредоточиться на ключевых
-            аспектах бизнеса и добиваться измеримых результатов.
+            Швей Метрикс — ERP под швейное производство: заказы, операции по этапам, учёт выработки и расчёт
+            зарплаты. Более 3 лет помогаем цехам уйти от разрозненных таблиц — вы получаете одну картину по сменам,
+            людям и деньгам.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-3 sm:gap-5">
@@ -255,48 +261,62 @@
   <!-- Why -->
   <section id="why" class="relative scroll-mt-24 border-y border-white/5 bg-night-900/40 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="pointer-events-none absolute inset-0 bg-mesh-opal opacity-40"></div>
-    <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="relative mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
-        <p class="text-xs font-medium uppercase tracking-widecap text-opal-mint">Преимущества</p>
-        <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
-          Преимущества нашего приложения
+        <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Преимущества</p>
+        <h2 class="mt-4 text-2xl font-semibold leading-tight tracking-hero text-white sm:text-3xl md:text-4xl">
+          Сделано для швейки. Не для всех подряд.
         </h2>
-        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
-          Заказы, этапы производства, выработка и зарплата в одном приложении — вы видите цифры по цеху, а не общие слова.
-        </p>
       </div>
-      <div class="mt-12 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-3">
+      <div class="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4 xl:gap-6">
         <article class="glass-panel p-6 sm:p-8 animate-float" data-aos="fade-up">
           <div
-            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-violetdeep/30 text-lg"
+            class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-violetdeep/30 text-2xl leading-none"
+            aria-hidden="true"
           >
-            ◆
+            🪡
           </div>
-          <h3 class="text-xl font-semibold text-white">Специализированный функционал</h3>
+          <h3 class="text-xl font-semibold text-white">Заточен под швейное производство</h3>
           <p class="mt-4 text-zinc-400 leading-relaxed">
-            ERP разработано для швейных цехов: производство, качество и контроль в одном контуре.
+            Здесь нет лишних модулей для ресторанов или магазинов. Только то, что нужно цеху: заказы, этапы производства,
+            выработка, зарплата.
           </p>
         </article>
         <article class="glass-panel p-6 sm:p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="80">
           <div
-            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-cyan/20 text-lg"
+            class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-cyan/20 text-2xl leading-none"
+            aria-hidden="true"
           >
-            ⟲
+            📱
           </div>
-          <h3 class="text-xl font-semibold text-white">Интеграция и автоматизация</h3>
+          <h3 class="text-xl font-semibold text-white">Работает с телефона</h3>
           <p class="mt-4 text-zinc-400 leading-relaxed">
-            Автоматизация ключевых процессов и интеграция с другими системами для единого управления.
+            Технолог вносит данные на производстве, владелец смотрит аналитику из любой точки. Без привязки к компьютеру.
           </p>
         </article>
         <article class="glass-panel p-6 sm:p-8 animate-float" data-aos="fade-up" data-aos-delay="160">
           <div
-            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-mint/20 text-lg font-semibold text-opal-mint"
+            class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-amber/20 text-2xl leading-none"
+            aria-hidden="true"
           >
-            ±
+            💸
           </div>
-          <h3 class="text-xl font-semibold text-white">Повышение производительности</h3>
+          <h3 class="text-xl font-semibold text-white">Автоматический расчёт зарплат</h3>
           <p class="mt-4 text-zinc-400 leading-relaxed">
-            Наглядная аналитика и дашборды для эффективности и прозрачности процессов.
+            Сдельная оплата считается сама — по количеству выполненных операций каждого сотрудника. Никаких споров,
+            никаких ошибок в таблицах.
+          </p>
+        </article>
+        <article class="glass-panel p-6 sm:p-8 animate-float-delayed" data-aos="fade-up" data-aos-delay="240">
+          <div
+            class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-opal-mint/20 text-2xl leading-none"
+            aria-hidden="true"
+          >
+            📊
+          </div>
+          <h3 class="text-xl font-semibold text-white">Видите всё в реальном времени</h3>
+          <p class="mt-4 text-zinc-400 leading-relaxed">
+            Сколько изделий в работе, у кого какая выработка, где тормозит производство — всё на одном экране.
           </p>
         </article>
       </div>
@@ -309,18 +329,21 @@
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
         <p class="text-xs font-medium uppercase tracking-widecap text-opal-rose">Возможности</p>
         <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
-          Чем вы можете управлять в Швей Метрикс
+          Всё что нужно для управления цехом
         </h2>
-        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
-          Всё что нужно для управления цехом — без модулей, которых у нас нет.
-        </p>
       </div>
 
       <div class="mt-12 grid gap-3 sm:mt-16 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        {% for item in capabilities %}
+        {% for row in capabilities_rows %}
         <div class="glass-panel p-5 sm:p-6" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 40 %}">
-          <h3 class="text-lg font-semibold text-white">{{ item.title }}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-zinc-400">{{ item.text }}</p>
+          <div
+            class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-opal-violetdeep/25 text-xl leading-none"
+            aria-hidden="true"
+          >
+            {{ row.emoji }}
+          </div>
+          <h3 class="text-lg font-semibold text-white">{{ row.title }}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-zinc-400">{{ row.text }}</p>
         </div>
         {% endfor %}
       </div>
@@ -343,7 +366,7 @@
               Места на внедрение в этом году — ограничены
             </h2>
             <p class="mt-3 max-w-xl text-sm text-slate-600 sm:text-base dark:text-zinc-400">
-              100+ фабрик будут подключены в этом году, забронируйте своё место.
+              100+ швейных цехов — в плане на 2026 год. Забронируйте свое место на внедрение.
             </p>
           </div>
           <a href="#contact" class="btn-primary min-h-[48px] w-full shrink-0 justify-center lg:w-auto">Попробовать бесплатно</a>
@@ -352,37 +375,91 @@
     </div>
   </section>
 
-  <!-- How ERP helps -->
+  <!-- How it works -->
   <section id="how" class="scroll-mt-24 border-t border-white/5 bg-night-900/30 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
-        <h2 class="text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
-          Как ERP помогает швейному производству
+        <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Как работает ШвейМетрикс</p>
+        <h2 class="mt-4 text-2xl font-semibold leading-tight tracking-hero text-white sm:text-3xl md:text-4xl">
+          Запустить можно за один день
         </h2>
-        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
-          Заказы, этапы и выработка в одном контуре: меньше ручного ввода и пересчётов — больше ясности по срокам и людям.
-        </p>
       </div>
-      <div class="mt-12 grid gap-6 sm:mt-16 sm:gap-8 lg:grid-cols-2">
-        <div class="glass-panel flex flex-col justify-between gap-6 p-6 sm:p-10" data-aos="fade-up">
-          <div>
-            <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">Мониторинг</p>
-            <h3 class="mt-3 text-2xl font-semibold text-white">Мониторинг фабрики</h3>
-            <p class="mt-4 text-zinc-400 leading-relaxed">
-              Удобный интерфейс для управления швейным цехом в реальном времени.
+
+      <ol
+        class="mx-auto mt-12 max-w-3xl list-none space-y-4 sm:mt-16 sm:space-y-6"
+        role="list"
+      >
+        <li class="glass-panel flex gap-5 p-6 sm:gap-6 sm:p-8 md:p-10" data-aos="fade-up">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-opal-violetdeep/35 text-base font-semibold tabular-nums text-white sm:h-12 sm:w-12 sm:text-lg"
+            aria-hidden="true"
+            >1</span
+          >
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-white sm:text-xl">Регистрация цеха</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+              Владелец создаёт рабочее пространство, добавляет цех и отправляет сотрудникам ссылку-приглашение.
             </p>
           </div>
-          <a href="#contact" class="btn-secondary min-h-[48px] w-full self-stretch sm:mt-2 sm:w-auto sm:self-start">Заказать</a>
-        </div>
-        <div class="glass-panel flex flex-col justify-between p-6 sm:p-10" data-aos="fade-up" data-aos-delay="100">
-          <div>
-            <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Зарплаты</p>
-            <h3 class="mt-3 text-2xl font-semibold text-white">Расчёт зарплат</h3>
-            <p class="mt-4 text-zinc-400 leading-relaxed">
-              Сдельная и оклад начисляются в приложении — суммы прозрачны сотруднику и владельцу, без споров из‑за таблиц.
+        </li>
+        <li class="glass-panel flex gap-5 p-6 sm:gap-6 sm:p-8 md:p-10" data-aos="fade-up" data-aos-delay="60">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-opal-violetdeep/35 text-base font-semibold tabular-nums text-white sm:h-12 sm:w-12 sm:text-lg"
+            aria-hidden="true"
+            >2</span
+          >
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-white sm:text-xl">Менеджер создаёт заказ</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+              Указывает клиента, изделие, количество, сроки. Заказ сразу становится виден технологу.
             </p>
           </div>
-        </div>
+        </li>
+        <li class="glass-panel flex gap-5 p-6 sm:gap-6 sm:p-8 md:p-10" data-aos="fade-up" data-aos-delay="120">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-opal-violetdeep/35 text-base font-semibold tabular-nums text-white sm:h-12 sm:w-12 sm:text-lg"
+            aria-hidden="true"
+            >3</span
+          >
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-white sm:text-xl">Технолог настраивает производство</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+              Создаёт этапы (крой, пошив, ОТК…), назначает сотрудников, указывает расценки за операцию.
+            </p>
+          </div>
+        </li>
+        <li class="glass-panel flex gap-5 p-6 sm:gap-6 sm:p-8 md:p-10" data-aos="fade-up" data-aos-delay="180">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-opal-violetdeep/35 text-base font-semibold tabular-nums text-white sm:h-12 sm:w-12 sm:text-lg"
+            aria-hidden="true"
+            >4</span
+          >
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-white sm:text-xl">Фиксируется выработка</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+              Каждый день технолог вносит данные: сколько выдано, сколько сделано, сколько брака. По каждому сотруднику,
+              по каждому дню.
+            </p>
+          </div>
+        </li>
+        <li class="glass-panel flex gap-5 p-6 sm:gap-6 sm:p-8 md:p-10" data-aos="fade-up" data-aos-delay="240">
+          <span
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-opal-violetdeep/35 text-base font-semibold tabular-nums text-white sm:h-12 sm:w-12 sm:text-lg"
+            aria-hidden="true"
+            >5</span
+          >
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold text-white sm:text-xl">Зарплата считается сама</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+              В конце периода система показывает итоговую сумму для каждого сотрудника. Владелец подтверждает — данные
+              идут в бухгалтерию.
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="mt-10 flex justify-center sm:mt-12" data-aos="fade-up" data-aos-delay="280">
+        <a href="#contact" class="btn-primary min-h-[48px] justify-center px-8">Попробовать бесплатно</a>
       </div>
     </div>
   </section>
@@ -392,7 +469,7 @@
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div data-aos="fade-right">
-          <p class="text-xs font-medium uppercase tracking-widecap text-opal-amber">Управление производством</p>
+          <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Управление производством</p>
           <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
             Что вы получаете на практике
           </h2>
@@ -403,15 +480,17 @@
         </div>
         <div class="space-y-4" data-aos="fade-left">
           <div class="glass-panel p-6">
-            <h3 class="font-semibold text-white">Добавьте информацию о компании</h3>
+            <h3 class="font-semibold text-white">Справочники под цех</h3>
             <p class="mt-2 text-sm text-zinc-400">
-              Удобное хранение данных о клиентах, поставщиках и материалах, проще контакты и ресурсы.
+              Клиенты, поставщики, материалы и сотрудники в одном месте — меньше потерянных контактов и дублей в
+              карточках.
             </p>
           </div>
           <div class="glass-panel p-6">
-            <h3 class="font-semibold text-white">Принцип работы</h3>
+            <h3 class="font-semibold text-white">Сквозной учёт</h3>
             <p class="mt-2 text-sm text-zinc-400">
-              ERP автоматически собирает и анализирует данные о производстве, упрощая управление.
+              Заказ ведёт этапы и выработку; из выработки считается зарплата — цепочка без разрывов между отдельными
+              таблицами.
             </p>
           </div>
           <div class="glass-panel p-6">
@@ -425,22 +504,81 @@
     </div>
   </section>
 
+  <!-- Testimonials -->
+  <section id="testimonials" class="scroll-mt-24 border-t border-white/5 bg-night-900/25 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center" data-aos="fade-up">
+        <p class="text-xs font-medium uppercase tracking-widecap text-opal-violet">Отзывы</p>
+        <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
+          Цеха, которые уже работают в ШвейМетрикс
+        </h2>
+        <p class="mt-4 text-base text-zinc-400 sm:text-lg">
+          Реальные истории владельцев и технологов — без видео и пустых обещаний.
+        </p>
+      </div>
+      <div class="mt-12 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-3">
+        <figure class="glass-panel flex h-full flex-col p-6 sm:p-8" data-aos="fade-up">
+          <blockquote class="flex-1 text-base leading-relaxed text-zinc-300">
+            <span class="text-opal-cyan/90" aria-hidden="true">«</span>Раньше расчёт зарплаты занимал у меня весь вечер
+            пятницы. Теперь нажимаю одну кнопку и всё готово.<span class="text-opal-cyan/90" aria-hidden="true">»</span>
+          </blockquote>
+          <figcaption class="mt-6 border-t border-white/10 pt-5 text-sm text-zinc-500">
+            — Ильяз А., основатель цеха Ailin, Бишкек
+          </figcaption>
+        </figure>
+        <figure class="glass-panel flex h-full flex-col p-6 sm:p-8" data-aos="fade-up" data-aos-delay="60">
+          <blockquote class="flex-1 text-base leading-relaxed text-zinc-300">
+            <span class="text-opal-cyan/90" aria-hidden="true">«</span>Заказы и этапы в одном месте — меньше звонков
+            «где заказ» и пересчётов в таблицах. Видно загрузку по дням.<span class="text-opal-cyan/90" aria-hidden="true"
+              >»</span
+            >
+          </blockquote>
+          <figcaption class="mt-6 border-t border-white/10 pt-5 text-sm text-zinc-500">
+            — Нургуль С., технолог, швейный цех, Бишкек
+          </figcaption>
+        </figure>
+        <figure class="glass-panel flex h-full flex-col p-6 sm:p-8" data-aos="fade-up" data-aos-delay="120">
+          <blockquote class="flex-1 text-base leading-relaxed text-zinc-300">
+            <span class="text-opal-cyan/90" aria-hidden="true">«</span>Перешли с Excel за пару дней: помогли настроить
+            пространство и перенести справочники. Швеям ничего не «внедряли» — вносит технолог, как и договаривались.<span
+              class="text-opal-cyan/90"
+              aria-hidden="true"
+              >»</span
+            >
+          </blockquote>
+          <figcaption class="mt-6 border-t border-white/10 pt-5 text-sm text-zinc-500">
+            — Бактияр Т., владелец производства, Бишкек
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- Lead + pricing anchor -->
   <section id="pricing" class="relative scroll-mt-24 border-y border-white/5 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="pointer-events-none absolute inset-0 bg-mesh-opal opacity-30"></div>
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div data-aos="fade-right">
-          <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">{{ content.pricing_eyebrow }}</p>
-          <h2 class="mt-4 text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl">
-            {{ content.pricing_title }}
+          {% if content.pricing_eyebrow %}
+            <p class="text-xs font-medium uppercase tracking-widecap text-opal-cyan">{{ content.pricing_eyebrow }}</p>
+          {% endif %}
+          {% if content.pricing_title %}
+            <p
+              class="text-xs font-medium uppercase tracking-widecap text-opal-violet {% if content.pricing_eyebrow %}mt-3{% endif %}"
+            >
+              {{ content.pricing_title }}
+            </p>
+          {% endif %}
+          <h2 class="mt-4 text-2xl font-semibold leading-tight tracking-hero text-white sm:text-3xl md:text-4xl">
+            {{ content.pricing_promo }}
           </h2>
           <p class="mt-4 text-base text-zinc-400 sm:text-lg">
             {{ content.pricing_text }}
           </p>
         </div>
         <div class="glass-panel p-6 sm:p-10" data-aos="fade-left">
-          <form method="post" class="space-y-5" novalidate>
+          <form method="post" class="space-y-5">
             {% csrf_token %}
             {% if lead_form.non_field_errors %}
               <div
@@ -450,17 +588,6 @@
                 {{ lead_form.non_field_errors }}
               </div>
             {% endif %}
-            <div>
-              <label
-                for="{{ lead_form.email.id_for_label }}"
-                class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
-                >{{ lead_form.email.label }}</label
-              >
-              {{ lead_form.email }}
-              {% if lead_form.email.errors %}
-                <p class="mt-1 text-xs text-red-400">{{ lead_form.email.errors.0 }}</p>
-              {% endif %}
-            </div>
             <div>
               <label
                 for="{{ lead_form.name.id_for_label }}"
@@ -485,29 +612,32 @@
             </div>
             <div>
               <label
-                for="{{ lead_form.employee_count.id_for_label }}"
+                for="{{ lead_form.email.id_for_label }}"
                 class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
-                >{{ lead_form.employee_count.label }}</label
+                >{{ lead_form.email.label }}</label
               >
-              {{ lead_form.employee_count }}
-              {% if lead_form.employee_count.errors %}
-                <p class="mt-1 text-xs text-red-400">{{ lead_form.employee_count.errors.0 }}</p>
+              {{ lead_form.email }}
+              {% if lead_form.email.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.email.errors.0 }}</p>
               {% endif %}
             </div>
             <div>
               <label
-                for="{{ lead_form.message.id_for_label }}"
+                for="{{ lead_form.employee_band.id_for_label }}"
                 class="mb-2 block text-sm font-medium text-slate-600 dark:text-zinc-300"
-                >{{ lead_form.message.label }}</label
+                >{{ lead_form.employee_band.label }}</label
               >
-              {{ lead_form.message }}
-              {% if lead_form.message.errors %}
-                <p class="mt-1 text-xs text-red-400">{{ lead_form.message.errors.0 }}</p>
+              {{ lead_form.employee_band }}
+              {% if lead_form.employee_band.errors %}
+                <p class="mt-1 text-xs text-red-400">{{ lead_form.employee_band.errors.0 }}</p>
               {% endif %}
             </div>
-            <button type="submit" class="btn-primary min-h-[48px] w-full justify-center">Оставить заявку</button>
-            <p class="text-xs text-zinc-500">
-              Нажимая кнопку, вы соглашаетесь с обработкой данных. Подробнее в документах ниже.
+            <button type="submit" class="btn-primary inline-flex min-h-[48px] w-full items-center justify-center gap-2">
+              <span>Оставить заявку</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="text-center text-xs text-zinc-500">
+              Без привязки карты. Без автоподписки.
             </p>
           </form>
         </div>
@@ -518,7 +648,17 @@
   <!-- FAQ -->
   <section id="faq" class="scroll-mt-24 py-16 sm:scroll-mt-28 sm:py-24 md:py-32">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl" data-aos="fade-up">
+      <p
+        class="text-center text-xs font-medium uppercase tracking-widecap text-opal-violet"
+        data-aos="fade-up"
+      >
+        FAQ
+      </p>
+      <h2
+        class="mt-4 text-center text-2xl font-semibold tracking-hero text-white sm:text-3xl md:text-4xl"
+        data-aos="fade-up"
+        data-aos-delay="40"
+      >
         Частые вопросы
       </h2>
       <div class="mt-8 space-y-3 sm:mt-10">
@@ -586,7 +726,7 @@
             </svg>
           </summary>
           <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-            Да, Швей Метрикс поддерживает несколько цехов под одним аккаунтом. Данные каждого цеха хранятся отдельно.
+            Да, ШвейМетрикс поддерживает несколько цехов под одним аккаунтом. Данные каждого цеха хранятся отдельно.
           </p>
         </details>
       </div>

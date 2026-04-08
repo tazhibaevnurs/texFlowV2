@@ -45,9 +45,9 @@ module.exports = {
         'hero-fade': 'linear-gradient(180deg, rgba(6, 6, 10, 0) 0%, #06060a 100%)',
       },
       animation: {
-        float: 'float 7s ease-in-out infinite',
-        'float-delayed': 'float 9s ease-in-out infinite 1s',
-        'pulse-soft': 'pulseSoft 5s ease-in-out infinite',
+        float: 'float 11s ease-in-out infinite',
+        'float-delayed': 'float 13s ease-in-out infinite 1.2s',
+        'pulse-soft': 'pulseSoft 6s ease-in-out infinite',
         'success-pop': 'successPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both',
         'success-shimmer': 'successShimmer 2.2s ease-in-out infinite',
       },

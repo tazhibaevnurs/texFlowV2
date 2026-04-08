@@ -9,7 +9,10 @@ class LandingContentAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Hero', {'fields': ('hero_eyebrow', 'hero_title_line1', 'hero_title_accent', 'hero_subtitle')}),
-        ('Блок заявки (pricing)', {'fields': ('pricing_eyebrow', 'pricing_title', 'pricing_text')}),
+        (
+            'Блок заявки (pricing)',
+            {'fields': ('pricing_eyebrow', 'pricing_title', 'pricing_promo', 'pricing_text')},
+        ),
     )
 
     def has_add_permission(self, request):
@@ -30,12 +33,12 @@ class CapabilityAdmin(admin.ModelAdmin):
 
 @admin.register(Lead)
 class LeadAdmin(admin.ModelAdmin):
-    list_display = ('email', 'name', 'employee_count', 'status', 'source', 'created_at')
+    list_display = ('email', 'name', 'phone', 'employee_band', 'employee_count', 'status', 'source', 'created_at')
     list_filter = ('status', 'source', 'created_at')
     search_fields = ('email', 'name', 'phone', 'message')
     readonly_fields = ('created_at', 'updated_at', 'ip_address', 'user_agent')
     fieldsets = (
-        (None, {'fields': ('email', 'name', 'phone', 'employee_count', 'message', 'status')}),
+        (None, {'fields': ('email', 'name', 'phone', 'employee_band', 'employee_count', 'message', 'status')}),
         ('Внутреннее', {'fields': ('admin_notes', 'source', 'ip_address', 'user_agent')}),
         ('Даты', {'fields': ('created_at', 'updated_at')}),
     )

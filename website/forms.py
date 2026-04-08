@@ -10,64 +10,61 @@ _FIELD_CLASS = (
     'dark:border-white/10 dark:bg-night-850/70 dark:text-white dark:placeholder:text-zinc-500 '
     'dark:focus:border-opal-cyan/55 dark:focus:ring-opal-cyan/25'
 )
-_TEXTAREA_CLASS = _FIELD_CLASS + ' min-h-[120px] resize-y'
+_SELECT_CLASS = _FIELD_CLASS + ' cursor-pointer appearance-none pr-10'
 
 
 class LeadForm(forms.ModelForm):
+    name = forms.CharField(
+        label='Имя',
+        required=True,
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                'class': _FIELD_CLASS,
+                'placeholder': 'Как к вам обращаться',
+                'autocomplete': 'name',
+            }
+        ),
+    )
+    phone = forms.CharField(
+        label='Телефон (WhatsApp)',
+        required=True,
+        max_length=64,
+        widget=forms.TextInput(
+            attrs={
+                'class': _FIELD_CLASS,
+                'placeholder': '+996 …',
+                'autocomplete': 'tel',
+                'inputmode': 'tel',
+            }
+        ),
+    )
+
     class Meta:
         model = Lead
-        fields = ('email', 'name', 'phone', 'employee_count', 'message')
+        fields = ('name', 'phone', 'email', 'employee_band')
         labels = {
             'email': 'Email',
-            'name': 'Имя',
-            'phone': 'Телефон',
-            'employee_count': 'Количество сотрудников',
-            'message': 'Сообщение',
+            'employee_band': 'Количество сотрудников в цеху',
         }
         widgets = {
             'email': forms.EmailInput(
                 attrs={
                     'class': _FIELD_CLASS,
-                    'placeholder': 'info@shveymetrics.kg',
+                    'placeholder': 'name@company.kg',
                     'autocomplete': 'email',
                     'inputmode': 'email',
                 }
             ),
-            'name': forms.TextInput(
+            'employee_band': forms.Select(
                 attrs={
-                    'class': _FIELD_CLASS,
-                    'placeholder': 'Как к вам обращаться',
-                    'autocomplete': 'name',
-                }
-            ),
-            'phone': forms.TextInput(
-                attrs={
-                    'class': _FIELD_CLASS,
-                    'placeholder': '+996 …',
-                    'autocomplete': 'tel',
-                }
-            ),
-            'employee_count': forms.NumberInput(
-                attrs={
-                    'class': _FIELD_CLASS,
-                    'placeholder': 'Например, 25',
-                    'min': 1,
-                    'inputmode': 'numeric',
-                }
-            ),
-            'message': forms.Textarea(
-                attrs={
-                    'class': _TEXTAREA_CLASS,
-                    'placeholder': 'Кратко о цехе или задаче',
-                    'rows': 4,
+                    'class': _SELECT_CLASS,
                 }
             ),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['email'].required = True
-        self.fields['name'].required = False
-        self.fields['phone'].required = False
-        self.fields['employee_count'].required = False
-        self.fields['message'].required = False
+        self.fields['email'].required = False
+        self.fields['employee_band'].required = True
+        self.fields['employee_band'].choices = [('', 'Выберите вариант')] + list(Lead.EmployeeBand.choices)

@@ -27,13 +27,21 @@ def _build_lead_message_html(lead: Lead) -> str:
         f'<b>Номер заявки</b> · <code>#{_esc(lead.pk)}</code>',
         '',
         f'<b>Email</b>',
-        f'<code>{_esc(lead.email)}</code>',
+        f'<code>{_esc(lead.email) if lead.email else "—"}</code>',
     ]
     if lead.name:
         rows.extend(['', f'<b>Имя</b>', f'{_esc(lead.name)}'])
     if lead.phone:
         rows.extend(['', f'<b>Телефон</b>', f'<code>{_esc(lead.phone)}</code>'])
-    if lead.employee_count is not None:
+    if lead.employee_band:
+        rows.extend(
+            [
+                '',
+                f'<b>Количество сотрудников</b>',
+                f'{_esc(lead.get_employee_band_display())}',
+            ]
+        )
+    elif lead.employee_count is not None:
         rows.extend(['', f'<b>Количество сотрудников</b>', f'<code>{_esc(lead.employee_count)}</code>'])
     if lead.message:
         msg = str(lead.message).strip()
@@ -53,13 +61,15 @@ def _build_lead_message_plain(lead: Lead) -> str:
         '',
         f'Номер заявки: #{lead.pk}',
         '',
-        f'Email: {lead.email}',
+        f'Email: {lead.email or "—"}',
     ]
     if lead.name:
         lines.extend(['', f'Имя: {lead.name}'])
     if lead.phone:
         lines.extend(['', f'Телефон: {lead.phone}'])
-    if lead.employee_count is not None:
+    if lead.employee_band:
+        lines.extend(['', f'Количество сотрудников: {lead.get_employee_band_display()}'])
+    elif lead.employee_count is not None:
         lines.extend(['', f'Количество сотрудников: {lead.employee_count}'])
     if lead.message:
         msg = str(lead.message).strip()

@@ -11,40 +11,45 @@ class LandingContent(models.Model):
     hero_eyebrow = models.CharField(
         'Бейдж над заголовком',
         max_length=255,
-        default='ERP для швейного производства',
+        default='Система для швейного производства',
     )
     hero_title_line1 = models.CharField(
         'Заголовок (первая строка)',
         max_length=255,
-        default='Производство сложное.',
+        default='Забудьте про Excel.',
     )
     hero_title_accent = models.CharField(
         'Заголовок (акцентная строка)',
         max_length=255,
-        default='Управлять им — проще.',
+        default='Управляйте цехом из телефона.',
     )
     hero_subtitle = models.TextField(
         'Подзаголовок под H1',
         default=(
-            'Управляйте швейным цехом с помощью нашего приложения. Получайте точные данные о производстве '
-            'и сосредоточьтесь на том, что важно для бизнеса.'
+            'ШвейМетрикс — приложение для владельцев швейных цехов и фабрик. Контролируйте заказы, выработку '
+            'сотрудников и расчёт зарплат в одном месте — в реальном времени.'
         ),
     )
     pricing_eyebrow = models.CharField(
         'Бейдж блока заявки',
         max_length=255,
-        default='Связаться',
+        blank=True,
+        default='',
     )
     pricing_title = models.CharField(
         'Заголовок блока заявки',
         max_length=255,
-        default='Оптимизировать · Управлять · Процветать',
+        default='Начните прямо сейчас',
+    )
+    pricing_promo = models.CharField(
+        'Акцент под заголовком (блок заявки)',
+        max_length=255,
+        default='Первые 14 дней — бесплатно',
     )
     pricing_text = models.TextField(
         'Текст блока заявки',
         default=(
-            'Увеличьте эффективность и оптимизируйте процессы с нашим ERP. Оставьте заявку — подберём '
-            'формат внедрения и стоимость.'
+            'Оставьте заявку — мы свяжемся в течение часа, настроим ваше рабочее пространство и ответим на все вопросы.'
         ),
     )
 
@@ -87,14 +92,27 @@ class Lead(models.Model):
         DONE = 'done', 'Обработана'
         REJECTED = 'rejected', 'Отклонена'
 
-    email = models.EmailField('Email')
+    class EmployeeBand(models.TextChoices):
+        LT10 = 'lt10', 'до 10'
+        M10_30 = 'm10_30', '10–30'
+        M30_100 = 'm30_100', '30–100'
+        GT100 = 'gt100', 'более 100'
+
+    email = models.EmailField('Email', blank=True)
     name = models.CharField('Имя', max_length=255, blank=True)
     phone = models.CharField('Телефон', max_length=64, blank=True)
+    employee_band = models.CharField(
+        'Количество сотрудников в цеху',
+        max_length=32,
+        choices=EmployeeBand.choices,
+        blank=True,
+        null=True,
+    )
     employee_count = models.PositiveIntegerField(
-        'Количество сотрудников',
+        'Количество сотрудников (устар.)',
         null=True,
         blank=True,
-        help_text='Число сотрудников на производстве (если указано)',
+        help_text='Раньше вводилось числом; для новых заявок используйте диапазон.',
     )
     message = models.TextField('Сообщение', blank=True)
     status = models.CharField(
@@ -117,4 +135,5 @@ class Lead(models.Model):
         verbose_name_plural = 'Заявки'
 
     def __str__(self):
-        return f'{self.email} ({self.get_status_display()})'
+        label = self.email or self.phone or self.name or f'#{self.pk}'
+        return f'{label} ({self.get_status_display()})'
