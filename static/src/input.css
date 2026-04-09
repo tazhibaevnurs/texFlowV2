@@ -104,9 +104,10 @@ html:not(.dark) h3 {
   box-shadow: none;
 }
 
+/* max-width: 967px ≈ +30 % к прежним 744px на широких экранах; на мобилке ниже — width 60 % */
 .hero-dashboard-img {
   width: 100%;
-  max-width: 620px;
+  max-width: 967px;
   object-fit: contain;
   display: block;
 }
@@ -121,16 +122,63 @@ html:not(.dark) h3 {
   animation-delay: 0.2s;
 }
 
+.hero-animate-cta {
+  animation: heroFadeInUp 0.75s ease-out both;
+  animation-delay: 0.12s;
+}
+
+/* Мобильное бургер-меню: стекло в тёмной теме (до lg; на мобилке альфа +20 % к прежним 0.8 → 0.96) */
+.dark .mobile-nav-dropdown {
+  background-color: rgba(15, 15, 22, 0.8) !important;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+}
+
+/* Пока виден бургер (< lg): плотнее фон в тёмной теме */
+@media (max-width: 1023px) {
+  .dark .mobile-nav-dropdown {
+    background-color: rgba(15, 15, 22, 0.96) !important;
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.015) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .dark .mobile-nav-dropdown {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgba(15, 15, 22, 0.98) !important;
+    background-image: none;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-dashboard-img {
-    max-width: 100%;
+    width: 60%;
+    max-width: 60%;
+    height: auto;
   }
 }
 
 /* Анимации декора: отключаем при системном «уменьшить движение» */
 @media (prefers-reduced-motion: reduce) {
   .hero-animate-left,
-  .hero-animate-right {
+  .hero-animate-right,
+  .hero-animate-cta {
     animation: none !important;
     opacity: 1;
     transform: none;
